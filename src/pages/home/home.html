@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Gaiak</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="dataBase">
+    <div *ngFor="let gaia of gaiak" >
+      <!-- <img src="assets/1.jpeg"/>
+      <div class="title"></div> -->
+      <button ion-button full (click)="clickGaia(gaia.maila)">{{gaia.maila}}. {{gaia.izenburu}}</button>      
+    </div>
+  </div>
+  <div *ngIf="!dataBase">
+    <h2>Fallo al obtener la basae de datos, revise su conexión a internet.</h2>
+  </div>
+</ion-content> 
