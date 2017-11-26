@@ -4,19 +4,21 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { readGaia } from '../pages/readGaia/readGaia';
+import { ariketak } from '../pages/ariketak/ariketak';
+import { evalAriketak } from '../pages/evalAriketak/evalAriketak';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
-import { readGaia } from '../pages/readGaia/readGaia';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     readGaia,
-    ListPage
+    ariketak,
+    evalAriketak
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { readGaia } from '../pages/readGaia/readGaia';
     MyApp,
     HomePage,
     readGaia,
-    ListPage
+    ariketak,
+    evalAriketak
   ],
   providers: [
     StatusBar,

@@ -45,9 +45,6 @@ export class HomePage {
   clickGaia(e){
     this.navCtrl.push(readGaia,{gaia:e});
   }
-  ngOnInit(){
-    // this.databaseService.getDatabase();
-  }
 }
 
-export let database = ()=>{return allData};
+export const database = ()=>{return allData};

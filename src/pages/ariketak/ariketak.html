@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><ion-icon name="create"></ion-icon> Ariketak</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngFor="let gaia of gaiak">
+    <!-- <img src="assets/1.jpeg"/>
+      <div class="title"></div> -->
+    <button ion-button full (click)="clickAriketak(gaia.maila)">{{gaia.maila}}. {{gaia.izenburu}}</button>
+  </div>
+</ion-content>

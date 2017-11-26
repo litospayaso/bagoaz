@@ -1,0 +1,19 @@
+page-home {
+}
+.sheet{
+    display: inline-block;
+    margin:10px;
+    height: calc(100vw / 2 - 50px);
+    width: calc(100vw / 2 - 50px);
+    border: solid 2px blue;
+    border-radius: 7px; 
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+.title{
+    height: 30px;
+    width: 100%;
+    background-color: white;
+}
