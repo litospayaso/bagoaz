@@ -20,6 +20,7 @@ export class evalAriketak {
   constructor(public navCtrl: NavController,
     public navParams: NavParams
   ) {
+
     let lesson = navParams.get('gaia') - 1
     this.izenburu = database().gaiak[lesson].izenburu;
     this.ariketakList = database().ariketak[lesson];
@@ -39,16 +40,15 @@ export class evalAriketak {
   }
 
   zuzendu() {
-    if(this.compareStrings(this.response,this.current.erantzun)){
+    if(this.compareStrings(this.response===undefined ? '' : this.response,this.current.erantzun)){
       this.isCorrecting = ["Oso ondo! ","Zuzen! ","Egoki! "].sort(function() {return Math.random() - 0.5}).pop();
     }else{
       this.isCorrecting = "Akats: " + this.current.erantzun
     }
-    
   }
 
   jarraitu() {
-    if(!this.compareStrings(this.response,this.current.erantzun)){
+    if(!this.compareStrings(this.response===undefined ? '' : this.response,this.current.erantzun)){
       this.ariketakList.push(this.current);
     }
     if(this.ariketakList.length>0){
