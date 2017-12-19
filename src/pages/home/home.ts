@@ -5,8 +5,6 @@ import { LoadingController } from 'ionic-angular';
 import { readGaia } from '../readGaia/readGaia';
 import 'rxjs/add/operator/map';
 
-// import { DatabaseService } from '../../app/services/databaseService';
-
 let allData;
 
 @Component({
@@ -17,10 +15,6 @@ let allData;
 export class HomePage {
   dataBase:object;
   gaiak:Array<Object>;
-
-  // getDatabase(){
-  //   return this.dataBase;
-  // }
 
   constructor(public navCtrl: NavController,
     public http: Http,
@@ -38,7 +32,16 @@ export class HomePage {
       this.gaiak = response.gaiak;
       loader.dismiss();
     },err => {
-      loader.dismiss();
+      http.get("../../assets/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
+        this.dataBase = response;
+        allData = response;
+        console.info("you don't have internet conection",this.dataBase);
+        this.gaiak = response.gaiak;
+        loader.dismiss();
+      },err => {
+        this.dataBase = undefined;
+        loader.dismiss();
+      });
     });
 
   }
