@@ -16,19 +16,21 @@ export class evalAriketak {
   audio: object;
   response: string;
   isCorrecting:string;
+  completePercent:string;
+  
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams
   ) {
-
-    let lesson = navParams.get('gaia') - 1
+    let lesson = navParams.get('gaia') - 1 ;
     this.izenburu = database().gaiak[lesson].izenburu;
     this.ariketakList = database().ariketak[lesson];
+    this.completePercent = "0";
     this.setCurrent();
   }
 
   setCurrent() {
-    this.current = this.ariketakList.sort(function() {return Math.random() - 0.5}).pop();
+    this.current = this.ariketakList.sort(() => {return Math.random() - 0.5}).pop();
     console.info('current', this.current);
     if (this.current.audio) {
       this.text = null;

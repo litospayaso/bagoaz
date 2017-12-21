@@ -17,3 +17,24 @@ page-home {
     width: 100%;
     background-color: white;
 }
+.percent-complete{
+    position: absolute;
+    width: 100vw;
+    background-color: white;
+    height: 10px;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+}
+.percent-complete span{
+    background-color: #5fce60;
+    height: 100%;
+    border-radius: 5px;
+    -webkit-box-shadow: 13px 3px 61px -8px rgba(0,0,0,0.47);
+    -moz-box-shadow: 13px 3px 61px -8px rgba(0,0,0,0.47);
+    box-shadow: 13px 3px 61px -8px rgba(0,0,0,0.47);
+    -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+}

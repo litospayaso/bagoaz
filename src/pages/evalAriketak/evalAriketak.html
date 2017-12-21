@@ -7,7 +7,9 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
+  <div class="percent-complete"><span [style.width]="completePercent"></span></div>
   <div *ngIf="text">
     <ion-card>
       <ion-card-header>
