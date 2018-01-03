@@ -27,6 +27,7 @@ page-home {
     border-radius: 5px;
 }
 .percent-complete span{
+    position: absolute;
     background-color: #5fce60;
     height: 100%;
     border-radius: 5px;
@@ -37,4 +38,19 @@ page-home {
     -moz-transition: width 1s ease-in-out;
     -o-transition: width 1s ease-in-out;
     transition: width 1s ease-in-out;
+}
+
+.zuzen{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px 0;
+    background-color: #66dc65;
+}
+
+.akats{
+
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px 0;
+    background-color: #ff2f2fa3;
 }

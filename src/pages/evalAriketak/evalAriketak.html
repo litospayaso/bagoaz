@@ -9,23 +9,29 @@
 
 
 <ion-content padding>
-  <div class="percent-complete"><span [style.width]="completePercent"></span></div>
-  <div *ngIf="text">
-    <ion-card>
-      <ion-card-header>
-        {{text.euskara}}
-      </ion-card-header>
-    </ion-card>
+  <div *ngIf="!zorionak">
+      <div class="percent-complete"><span [style.width]="completePercent"></span></div>
+      <div *ngIf="text">
+        <ion-card>
+          <ion-card-header>
+            {{text.euskara}}
+          </ion-card-header>
+        </ion-card>
+      </div>
+      <div *ngIf="audio"></div>
+      <ion-item>
+        <ion-textarea type="text" lineHeight="22" [(ngModel)]="response"></ion-textarea>
+      </ion-item>
+        <div *ngIf="!isCorrecting">
+        <button ion-button full (click)="zuzendu()">Zuzendu</button>
+      </div>
+      <div *ngIf="isCorrecting">
+        <div [className]="evaluationClass">{{isCorrecting}}</div>
+        <button ion-button full (click)="jarraitu()">Jarraitu</button>
+      </div>
   </div>
-  <div *ngIf="audio"></div>
-  <ion-item>
-    <ion-textarea type="text" lineHeight="22" [(ngModel)]="response"></ion-textarea>
-  </ion-item>
-    <div *ngIf="!isCorrecting">
-    <button ion-button full (click)="zuzendu()">Zuzendu</button>
+  <div *ngIf="zorionak">
+    ENHORABUENA!!!
   </div>
-  <div *ngIf="isCorrecting">
-    <div>{{isCorrecting}}</div>
-    <button ion-button full (click)="jarraitu()">Jarraitu</button>
-  </div>
+      
 </ion-content>

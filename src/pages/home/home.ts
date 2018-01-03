@@ -38,6 +38,7 @@ export class HomePage {
         console.info("you don't have internet conection",this.dataBase);
         this.gaiak = response.gaiak;
         loader.dismiss();
+        this.navCtrl.push(readGaia,{gaia:17});
       },err => {
         this.dataBase = undefined;
         loader.dismiss();

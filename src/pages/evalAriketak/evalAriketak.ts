@@ -17,7 +17,9 @@ export class evalAriketak {
   response: string;
   isCorrecting:string;
   completePercent:string;
-  
+  evaluationClass:string;
+  totalAriketak:number;
+  zorionak:boolean = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams
@@ -26,6 +28,7 @@ export class evalAriketak {
     this.izenburu = database().gaiak[lesson].izenburu;
     this.ariketakList = database().ariketak[lesson];
     this.completePercent = "0";
+    this.totalAriketak = this.ariketakList.length;
     this.setCurrent();
   }
 
@@ -44,8 +47,11 @@ export class evalAriketak {
   zuzendu() {
     if(this.compareStrings(this.response===undefined ? '' : this.response,this.current.erantzun)){
       this.isCorrecting = ["Oso ondo! ","Zuzen! ","Egoki! "].sort(function() {return Math.random() - 0.5}).pop();
+      this.evaluationClass="zuzen";
+      this.completePercent=((this.totalAriketak - this.ariketakList.length) * 100 / this.totalAriketak) + "%";
     }else{
       this.isCorrecting = "Akats: " + this.current.erantzun
+      this.evaluationClass="akats";
     }
   }
 
@@ -57,6 +63,8 @@ export class evalAriketak {
       this.isCorrecting=null;
       this.response="";
       this.setCurrent();
+    }else{
+      this.zorionak=true;
     }
   }
 

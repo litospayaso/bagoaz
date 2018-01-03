@@ -1,5 +1,14 @@
 page-home {
 }
+td, th {
+    padding: 5px;
+}
+tr{
+    border-top: solid #808080 1px;
+}
+.table{
+    width: 100%;
+}
 .sheet{
     display: inline-block;
     margin:10px;
