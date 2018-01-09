@@ -3,6 +3,7 @@ import { NavController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { readGaia } from '../readGaia/readGaia';
+import { evalAriketak } from '../evalAriketak/evalAriketak';
 import 'rxjs/add/operator/map';
 
 let allData;
@@ -31,6 +32,7 @@ export class HomePage {
       console.info(this.dataBase);
       this.gaiak = response.gaiak;
       loader.dismiss();
+      this.navCtrl.push(evalAriketak,{gaia:1});
     },err => {
       http.get("../../assets/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
         this.dataBase = response;

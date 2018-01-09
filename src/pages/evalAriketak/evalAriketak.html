@@ -18,7 +18,19 @@
           </ion-card-header>
         </ion-card>
       </div>
-      <div *ngIf="audio"></div>
+      <div *ngIf="audio">
+        <ion-list>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <!-- <img src="img/thumbnail-totoro.png"> -->
+              <button class="button-media" (click)="playMedia()">
+                <ion-icon [name]="mediaIcon"></ion-icon>
+              </button>
+            </ion-thumbnail>
+            <h2>Escucha y escribe</h2>
+          </ion-item>
+        </ion-list>
+      </div>
       <ion-item>
         <ion-textarea type="text" lineHeight="22" [(ngModel)]="response"></ion-textarea>
       </ion-item>
@@ -33,5 +45,4 @@
   <div *ngIf="zorionak">
     ENHORABUENA!!!
   </div>
-      
 </ion-content>

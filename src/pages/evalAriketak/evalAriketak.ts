@@ -20,6 +20,7 @@ export class evalAriketak {
   evaluationClass:string;
   totalAriketak:number;
   zorionak:boolean = false;
+  mediaIcon:string = "play";
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams
@@ -66,6 +67,10 @@ export class evalAriketak {
     }else{
       this.zorionak=true;
     }
+  }
+
+  playMedia(){
+    this.mediaIcon = "pause";
   }
 
   compareStrings(str1, str2) {
