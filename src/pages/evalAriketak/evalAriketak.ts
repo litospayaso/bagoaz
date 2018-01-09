@@ -13,7 +13,7 @@ export class evalAriketak {
   ariketakList: Array<Object>;
   current: any;
   text: object;
-  audio: object;
+  audio: string;
   response: string;
   isCorrecting:string;
   completePercent:string;
@@ -38,7 +38,7 @@ export class evalAriketak {
     console.info('current', this.current);
     if (this.current.audio) {
       this.text = null;
-      this.audio = this.current;
+      this.audio = "https://raw.githubusercontent.com/litospayaso/bagoaz-ionic/master/www/database/audios/"+ this.current.audio +".mp3";
     } else {
       this.audio = null;
       this.text = this.current;
@@ -71,6 +71,10 @@ export class evalAriketak {
 
   playMedia(){
     this.mediaIcon = "pause";
+    let audioTag = document.getElementById('audioTag'); 
+    console.info("jejej",window.document.getElementById('audioTag'));
+    // audioTag.play().done(()=>{this.mediaIcon = "play"});
+    // (window.document.getElementById('audioTag').paused && document.getElementById('audioTag').currentTime > 0) ? document.getElementById('audioTag').play() : document.getElementById('audioTag').pause()
   }
 
   compareStrings(str1, str2) {

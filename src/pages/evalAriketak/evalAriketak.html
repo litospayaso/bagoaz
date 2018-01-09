@@ -30,6 +30,7 @@
             <h2>Escucha y escribe</h2>
           </ion-item>
         </ion-list>
+        <audio controls="controls" id="audioTag" autoplay><source [src]="audio" type="audio/mpeg"></audio>
       </div>
       <ion-item>
         <ion-textarea type="text" lineHeight="22" [(ngModel)]="response"></ion-textarea>
