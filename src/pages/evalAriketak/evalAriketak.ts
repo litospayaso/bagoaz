@@ -70,10 +70,10 @@ export class evalAriketak {
   }
 
   playMedia(){
-    this.mediaIcon = "pause";
-    let audioTag = document.getElementById('audioTag'); 
-    console.info("jejej",window.document.getElementById('audioTag'));
-    // audioTag.play().done(()=>{this.mediaIcon = "play"});
+    // this.mediaIcon = "pause";
+    let audioTag = <HTMLAudioElement> document.getElementById('audioTag');
+    console.info("jejej",audioTag);
+    audioTag.play();
     // (window.document.getElementById('audioTag').paused && document.getElementById('audioTag').currentTime > 0) ? document.getElementById('audioTag').play() : document.getElementById('audioTag').pause()
   }
 
