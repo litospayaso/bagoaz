@@ -18,6 +18,11 @@ export class readGaia {
   ) {
     let lesson = navParams.get('gaia')-1
     this.izenburu = database().gaiak[lesson].izenburu;
-    this.gaia = database().gaiak[lesson].gaia;
+    let currentGaia = database().gaiak[lesson].gaia;
+    let hizta = navParams.get('hizta');
+    if(hizta){
+      currentGaia = currentGaia.replace(new RegExp(hizta, 'gi'),"<span class='highlight'>"+hizta+"</span>")
+    }
+    this.gaia = currentGaia;
   }
 }

@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // import { DatabaseService } from './services/databaseService';
 import { HomePage } from '../pages/home/home';
 import { ariketak } from '../pages/ariketak/ariketak';
+import { bilatzaile } from '../pages/bilatzaile/bilatzaile';
 
 @Component({
   templateUrl: 'app.html',
@@ -24,7 +25,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Gaiak', icon:'book', component: HomePage},
-      { title: 'Ariketak', icon:'create', component: ariketak }
+      { title: 'Ariketak', icon:'create', component: ariketak },
+      { title: 'Bilatzaile', icon:'search', component: bilatzaile }
     ];
 
   }

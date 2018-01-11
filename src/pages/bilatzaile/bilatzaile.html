@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>  <ion-icon name="search"></ion-icon> Bilatzaile </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+      <ion-item>
+        <ion-label fixed><ion-icon name="search"></ion-icon> Hizta</ion-label>
+        <ion-input type="text" [(ngModel)]="hizta" (ngModelChange)="bilatzaile()"></ion-input>
+      </ion-item>
+  </ion-list>
+
+  <div *ngFor="let gaia of gaiak" >
+    <button ion-button full (click)="clickGaia(gaia.maila)">{{gaia.maila}}. {{gaia.izenburu}}</button>      
+  </div>
+</ion-content> 
