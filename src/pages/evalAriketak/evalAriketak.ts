@@ -76,6 +76,17 @@ export class evalAriketak {
     // (window.document.getElementById('audioTag').paused && document.getElementById('audioTag').currentTime > 0) ? document.getElementById('audioTag').play() : document.getElementById('audioTag').pause()
   }
 
+  onKeyPress(event){
+    if(event.keyCode === 13){
+      if(this.isCorrecting){
+        this.jarraitu()
+      }else{
+        this.zuzendu();
+      }
+      // console.info("jfcaeopea0",event);
+    }
+  }
+
   compareStrings(str1, str2) {
     let answer = str1,
       solution = str2;
