@@ -8,6 +8,7 @@ import { readGaia } from '../pages/readGaia/readGaia';
 import { ariketak } from '../pages/ariketak/ariketak';
 import { evalAriketak } from '../pages/evalAriketak/evalAriketak';
 import { bilatzaile } from '../pages/bilatzaile/bilatzaile';
+import { about } from '../pages/about/about';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,7 +21,8 @@ import { HttpModule } from '@angular/http';
     readGaia,
     ariketak,
     evalAriketak,
-    bilatzaile
+    bilatzaile,
+    about
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { HttpModule } from '@angular/http';
     readGaia,
     ariketak,
     evalAriketak,
-    bilatzaile
+    bilatzaile,
+    about
   ],
   providers: [
     StatusBar,

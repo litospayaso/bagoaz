@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ariketak } from '../pages/ariketak/ariketak';
 import { bilatzaile } from '../pages/bilatzaile/bilatzaile';
+import { about } from '../pages/about/about';
 
 @Component({
   templateUrl: 'app.html',
@@ -26,7 +27,8 @@ export class MyApp {
     this.pages = [
       { title: 'Gaiak', icon:'book', component: HomePage},
       { title: 'Ariketak', icon:'create', component: ariketak },
-      { title: 'Bilatzaile', icon:'search', component: bilatzaile }
+      { title: 'Bilatzaile', icon:'search', component: bilatzaile },
+      { title: 'Laguntza', icon:'help', component: about }
     ];
 
   }
