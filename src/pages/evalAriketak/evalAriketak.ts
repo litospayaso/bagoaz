@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { database } from '../home/home';
+// import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -24,6 +25,7 @@ export class evalAriketak {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams
+    // public storage : Storage
   ) {
     let lesson = navParams.get('gaia') - 1 ;
     this.izenburu = database().gaiak[lesson].izenburu;
@@ -83,7 +85,6 @@ export class evalAriketak {
       }else{
         this.zuzendu();
       }
-      // console.info("jfcaeopea0",event);
     }
   }
 

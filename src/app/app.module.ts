@@ -11,6 +11,7 @@ import { bilatzaile } from '../pages/bilatzaile/bilatzaile';
 import { about } from '../pages/about/about';
 
 import { StatusBar } from '@ionic-native/status-bar';
+import { IonicStorageModule } from '@ionic/storage';// import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 
@@ -27,7 +28,8 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,6 +44,7 @@ import { HttpModule } from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
+    // IonicStorageModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

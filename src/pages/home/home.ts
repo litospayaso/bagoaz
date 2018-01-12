@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { readGaia } from '../readGaia/readGaia';
 import { evalAriketak } from '../evalAriketak/evalAriketak';
+import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
 let allData;
@@ -20,30 +21,44 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public http: Http,
     public loadingCtrl: LoadingController,
+    public storage : Storage
   ) {
     let loader = this.loadingCtrl.create({
       content:'Cargando...'
     });
     loader.present();
     this.navCtrl = navCtrl;
+    this.storage = storage;
     http.get("https://raw.githubusercontent.com/litospayaso/bagoaz-ionic/master/www/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
       this.dataBase = response;
       allData = response;
+      this.storage.set('allData',JSON.stringify(allData));
       console.info(this.dataBase);
       this.gaiak = response.gaiak;
       loader.dismiss();
-      this.navCtrl.push(evalAriketak,{gaia:1});
+      // this.navCtrl.push(evalAriketak,{gaia:1});
     },err => {
-      http.get("../../assets/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
-        this.dataBase = response;
-        allData = response;
-        console.info("you don't have internet conection",this.dataBase);
-        this.gaiak = response.gaiak;
-        loader.dismiss();
-        this.navCtrl.push(readGaia,{gaia:17});
-      },err => {
-        this.dataBase = undefined;
-        loader.dismiss();
+      storage.get('allData').then((val) => {
+        if(val){
+          let response = JSON.parse(val);
+          this.dataBase = response;
+          allData = response;
+          console.info("you don't have internet conection, running with cache.",this.dataBase);
+          this.gaiak = response.gaiak;
+          loader.dismiss();
+          // this.navCtrl.push(readGaia,{gaia:17});
+        }else{
+          http.get("../../assets/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
+            this.dataBase = response;
+            allData = response;
+            console.info("you don't have internet conection, running with local json.",this.dataBase);
+            this.gaiak = response.gaiak;
+            loader.dismiss();
+          },err => {
+            this.dataBase = undefined;
+            loader.dismiss();
+          });    
+        }
       });
     });
 
