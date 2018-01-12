@@ -36,7 +36,7 @@ export class HomePage {
       console.info(this.dataBase);
       this.gaiak = response.gaiak;
       loader.dismiss();
-      // this.navCtrl.push(evalAriketak,{gaia:1});
+      this.navCtrl.push(evalAriketak,{gaia:35});
     },err => {
       storage.get('allData').then((val) => {
         if(val){

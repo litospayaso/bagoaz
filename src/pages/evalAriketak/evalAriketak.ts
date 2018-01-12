@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { database } from '../home/home';
+import { Http } from '@angular/http';
 // import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
@@ -24,9 +25,11 @@ export class evalAriketak {
   mediaIcon:string = "play";
 
   constructor(public navCtrl: NavController,
+    public http: Http,
     public navParams: NavParams
     // public storage : Storage
   ) {
+    this.http = http;
     let lesson = navParams.get('gaia') - 1 ;
     this.izenburu = database().gaiak[lesson].izenburu;
     this.ariketakList = database().ariketak[lesson];
@@ -41,6 +44,9 @@ export class evalAriketak {
     if (this.current.audio) {
       this.text = null;
       this.audio = "https://raw.githubusercontent.com/litospayaso/bagoaz-ionic/master/www/database/audios/"+ this.current.audio +".mp3";
+      this.http.get(this.audio).subscribe(null,err=>{//en caso de error se salta el ejercicio de audio.
+        this.setCurrent();
+      });
     } else {
       this.audio = null;
       this.text = this.current;
