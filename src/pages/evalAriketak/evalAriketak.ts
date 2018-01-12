@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { database } from '../home/home';
 import { Http } from '@angular/http';
-// import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -21,18 +21,20 @@ export class evalAriketak {
   completePercent:string;
   evaluationClass:string;
   totalAriketak:number;
+  lesson:number;
   zorionak:boolean = false;
   mediaIcon:string = "play";
 
   constructor(public navCtrl: NavController,
     public http: Http,
-    public navParams: NavParams
-    // public storage : Storage
+    public navParams: NavParams,
+    public storage : Storage
   ) {
     this.http = http;
-    let lesson = navParams.get('gaia') - 1 ;
-    this.izenburu = database().gaiak[lesson].izenburu;
-    this.ariketakList = database().ariketak[lesson];
+    this.storage = storage;
+    this.lesson = navParams.get('gaia') - 1 ;
+    this.izenburu = database().gaiak[this.lesson].izenburu;
+    this.ariketakList = database().ariketak[this.lesson];
     this.completePercent = "0";
     this.totalAriketak = this.ariketakList.length;
     this.setCurrent();
@@ -74,6 +76,16 @@ export class evalAriketak {
       this.setCurrent();
     }else{
       this.zorionak=true;
+      this.storage.get('lessonPassed').then((val) => {
+        let cookie;
+        if(val){
+          cookie = JSON.parse(val);
+        }else{
+          cookie = [];
+        }
+        cookie.push(this.lesson);
+        this.storage.set("lessonPassed",JSON.stringify(cookie));
+      });
     }
   }
 
