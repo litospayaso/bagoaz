@@ -9,6 +9,7 @@
 
 <ion-content padding>
   <div id="lessonContainer">
-    <div [innerHTML] = " gaia "></div>
+    <div [innerHTML] = " currentGaia "></div>
   </div>
+  <button ion-button full (click)="clickAriketak(gaia.maila)">Ejercicios de {{gaia.izenburu}}</button>      
 </ion-content> 
