@@ -43,14 +43,16 @@ page-home {
     padding: 5px;
     border-radius: 5px;
     margin: 10px 0;
-    background-color: #66dc65;
+    // background-color: #66dc65;
+    background-color: map-get($colors, secondary);
 }
 .akats{
 
     padding: 5px;
     border-radius: 5px;
     margin: 10px 0;
-    background-color: #ff2f2fa3;
+    // background-color: #ff2f2fa3;
+    background-color: map-get($colors, danger);
 }
 .button-media{
     height: 40px;
