@@ -42,7 +42,7 @@ export class evalAriketak {
     this.totalAriketak = this.ariketakList.length;
     this.setCurrent();
 
-    // this.hiztegiakService.translate("a","b","c");
+    this.hiztegiakService.translate("aita","eu","c");
   }
 
   setCurrent() {
