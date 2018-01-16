@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { database } from '../home/home';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
+
+import { HiztegiakService } from '../../assets/services/HiztegiakService';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -28,7 +30,8 @@ export class evalAriketak {
   constructor(public navCtrl: NavController,
     public http: Http,
     public navParams: NavParams,
-    public storage : Storage
+    public storage : Storage,
+    public hiztegiakService: HiztegiakService
   ) {
     this.http = http;
     this.storage = storage;
@@ -38,6 +41,8 @@ export class evalAriketak {
     this.completePercent = "0";
     this.totalAriketak = this.ariketakList.length;
     this.setCurrent();
+
+    // this.hiztegiakService.translate("a","b","c");
   }
 
   setCurrent() {

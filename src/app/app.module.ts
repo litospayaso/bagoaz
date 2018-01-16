@@ -10,6 +10,8 @@ import { evalAriketak } from '../pages/evalAriketak/evalAriketak';
 import { bilatzaile } from '../pages/bilatzaile/bilatzaile';
 import { about } from '../pages/about/about';
 
+import { HiztegiakService } from '../assets/services/HiztegiakService';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';// import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -44,6 +46,7 @@ import { HttpModule } from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
+    HiztegiakService,
     // IonicStorageModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
