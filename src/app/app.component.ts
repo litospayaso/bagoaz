@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ariketak } from '../pages/ariketak/ariketak';
 import { bilatzaile } from '../pages/bilatzaile/bilatzaile';
+import { hiztegiak } from '../pages/hiztegiak/hiztegiak';
 import { about } from '../pages/about/about';
 
 @Component({
@@ -28,6 +29,7 @@ export class MyApp {
       { title: 'Gaiak', icon:'book', color:'#10c1f3', component: HomePage},
       { title: 'Ariketak', icon:'create', color:'#ffc900', component: ariketak },
       { title: 'Bilatzaile', icon:'search', color:'#f53d3d', component: bilatzaile },
+      { title: 'Hiztegiak', icon:'bookmarks', color:'#33cd5e', component: hiztegiak },
       { title: 'Laguntza', icon:'help', color:'#886aea', component: about }//#33cd5e
     ];
 

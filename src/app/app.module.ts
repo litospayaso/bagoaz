@@ -8,6 +8,7 @@ import { readGaia } from '../pages/readGaia/readGaia';
 import { ariketak } from '../pages/ariketak/ariketak';
 import { evalAriketak } from '../pages/evalAriketak/evalAriketak';
 import { bilatzaile } from '../pages/bilatzaile/bilatzaile';
+import { hiztegiak } from '../pages/hiztegiak/hiztegiak';
 import { about } from '../pages/about/about';
 
 import { HiztegiakService } from '../assets/services/HiztegiakService';
@@ -25,6 +26,7 @@ import { HttpModule } from '@angular/http';
     ariketak,
     evalAriketak,
     bilatzaile,
+    hiztegiak,
     about
   ],
   imports: [
@@ -41,6 +43,7 @@ import { HttpModule } from '@angular/http';
     ariketak,
     evalAriketak,
     bilatzaile,
+    hiztegiak,
     about
   ],
   providers: [
