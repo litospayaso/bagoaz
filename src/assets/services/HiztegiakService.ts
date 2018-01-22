@@ -46,6 +46,8 @@ export class HiztegiakService {
           callback(false);
         }
       }
+    },(err)=>{
+      callback(err);
     });
   }
 }

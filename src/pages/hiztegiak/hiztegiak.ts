@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { LoadingController } from 'ionic-angular';
 
-// import { DatabaseService } from '../../app/services/databaseService';
+import { HiztegiakService } from '../../assets/services/HiztegiakService';
 
 @Component({
   selector: 'hiztegiak',
@@ -8,10 +9,25 @@ import { Component } from '@angular/core';
 })
 export class hiztegiak {
   hizta:string;
-  gaiak:Array<Object> = [];
+  language:string = 'eu';
+  result:{
+    hitza:String,
+    trans:Array<string>,
+    examples:Array<string>,
+    language:string
+  };
 
-  constructor() {
+  constructor(public hiztegiakService: HiztegiakService,
+    public loadingCtrl: LoadingController,
+  ) {
   }
-  bilatzaile(){
+  clickTranslate(){
+    let loader = this.loadingCtrl.create({
+      content:'Cargando...'
+    });
+    this.hiztegiakService.translate(this.hizta,this.language,(data)=>{
+      loader.dismiss();
+      this.result = {hitza:"hola",trans:['a','b'],examples:['aa','bb'],language:'es'}
+    });
   }
 }

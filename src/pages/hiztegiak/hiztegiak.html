@@ -3,25 +3,53 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>  <ion-icon name="search"></ion-icon> Bilatzaile </ion-title>
+    <ion-title>
+      <ion-icon name="search"></ion-icon> Bilatzaile </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-      <ion-item>
-        <ion-label fixed><ion-icon name="search"></ion-icon> Hizta</ion-label>
-        <ion-input type="text" [(ngModel)]="hizta" (ngModelChange)="bilatzaile()"></ion-input><ion-item>
-        <ion-label>Lenguage</ion-label>
-        </ion-item>
-      </ion-item>
-      <ion-select [(ngModel)]="language">
-        <ion-option value="eu">Euskera - Castellano</ion-option>
-        <ion-option value="es">Castellano - Euskera</ion-option>
-      </ion-select>
-</ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <!-- <ion-label fixed>
+              <ion-icon name="search"></ion-icon> Hizta</ion-label> -->
+            <ion-input type="text" [(ngModel)]="hizta"></ion-input>
+            <ion-item>
+              <ion-label>Lenguage</ion-label>
+            </ion-item>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-select [(ngModel)]="language">
+            <ion-option value="eu">Euskera - Castellano</ion-option>
+            <ion-option value="es">Castellano - Euskera</ion-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item>
+      <button ion-button full (click)="clickTranslate()">Buscar</button>
+    </ion-item>
+  </ion-list>
 
-  <div *ngFor="let gaia of gaiak" >
-    <button ion-button full (click)="clickGaia(gaia.maila)">{{gaia.maila}}. {{gaia.izenburu}}</button>      
+  <div *ngIf="result">
+    <ion-card>
+      {{result.hizta}}
+      <ion-card-title>
+        <div *ngFor="let translation of result.trans">
+          <li>{{translation}}</li>
+        </div>
+      </ion-card-title>
+      <ion-card-header>
+        <div *ngFor="let example of result.examples">
+          <li>{{example}}</li>
+        </div>
+      </ion-card-header>
+    </ion-card>
   </div>
-</ion-content> 
+
+
+</ion-content>
