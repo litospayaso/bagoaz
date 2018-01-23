@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import { database } from '../home/home';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
+import { LoadingController } from 'ionic-angular';
+
+import { hiztegiakView } from '../../assets/components/hiztegiakView/hiztegiakView';
 
 import { HiztegiakService } from '../../assets/services/HiztegiakService';
 import 'rxjs/add/operator/map';
@@ -31,7 +34,9 @@ export class evalAriketak {
     public http: Http,
     public navParams: NavParams,
     public storage : Storage,
-    public hiztegiakService: HiztegiakService
+    public popoverCtrl: PopoverController,
+    public hiztegiakService: HiztegiakService,
+    public loadingCtrl: LoadingController
   ) {
     this.http = http;
     this.storage = storage;
@@ -45,7 +50,19 @@ export class evalAriketak {
 
   translate(event){
     let word = event.target.innerText;
-    console.info(word);
+    let loader = this.loadingCtrl.create({
+      content:'Cargando...'
+    });
+    loader.present();
+    this.hiztegiakService.translate(word,(data)=>{
+      let popover = this.popoverCtrl.create(hiztegiakView,{
+        result:data
+      });
+      loader.dismiss();
+      popover.present({
+        ev: event
+      });
+    });
   }
 
   setCurrent() {
