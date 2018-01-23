@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <ion-icon name="search"></ion-icon> Bilatzaile </ion-title>
+      <ion-icon name="bookmarks"></ion-icon> Hiztegiak </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -23,7 +23,7 @@
           </ion-item>
         </ion-col>
         <ion-col>
-          <ion-select [(ngModel)]="language">
+          <ion-select [(ngModel)]="language" interface="popover">
             <ion-option value="eu">Euskera - Castellano</ion-option>
             <ion-option value="es">Castellano - Euskera</ion-option>
           </ion-select>
@@ -37,17 +37,29 @@
 
   <div *ngIf="result">
     <ion-card>
-      {{result.hizta}}
-      <ion-card-title>
-        <div *ngFor="let translation of result.trans">
-          <li>{{translation}}</li>
-        </div>
-      </ion-card-title>
       <ion-card-header>
-        <div *ngFor="let example of result.examples">
-          <li>{{example}}</li>
-        </div>
+        {{result.hitza}}
       </ion-card-header>
+      <ion-card-content>
+        <ion-list no-lines>
+          <div *ngFor="let translation of result.trans">
+            {{translation}}
+          </div>
+        </ion-list>        
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="result.examples.length>0">
+      <ion-card-header>
+        Ejemplos
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <div *ngFor="let example of result.examples">
+            {{example}}
+          </div>
+        </ion-list>        
+      </ion-card-content>
     </ion-card>
   </div>
 

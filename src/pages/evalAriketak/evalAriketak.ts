@@ -41,10 +41,11 @@ export class evalAriketak {
     this.completePercent = "0";
     this.totalAriketak = this.ariketakList.length;
     this.setCurrent();
+  }
 
-    this.hiztegiakService.translate("nolo","eu",(data)=>{
-      console.info("dfjada",data);
-    });
+  translate(event){
+    let word = event.target.innerText;
+    console.info(word);
   }
 
   setCurrent() {
@@ -58,6 +59,7 @@ export class evalAriketak {
       });
     } else {
       this.audio = null;
+      this.current.euskara = this.current.euskara.split(" ");
       this.text = this.current;
     }
   }

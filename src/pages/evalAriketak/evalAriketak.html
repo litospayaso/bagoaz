@@ -14,7 +14,9 @@
       <div *ngIf="text">
         <ion-card>
           <ion-card-header>
-            {{text.euskara}}
+              <span *ngFor="let texto of text.euskara" (click)="translate($event)">
+                {{texto.concat(" ")}}
+              </span>
           </ion-card-header>
         </ion-card>
       </div>

@@ -25,9 +25,10 @@ export class hiztegiak {
     let loader = this.loadingCtrl.create({
       content:'Cargando...'
     });
+    loader.present();
     this.hiztegiakService.translate(this.hizta,this.language,(data)=>{
       loader.dismiss();
-      this.result = {hitza:"hola",trans:['a','b'],examples:['aa','bb'],language:'es'}
+      this.result = data;
     });
   }
 }
