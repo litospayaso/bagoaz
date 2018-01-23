@@ -12,9 +12,10 @@ import { hiztegiak } from '../pages/hiztegiak/hiztegiak';
 import { about } from '../pages/about/about';
 
 import { HiztegiakService } from '../assets/services/HiztegiakService';
+import { hiztegiakView } from '../assets/components/hiztegiakView';
 
 import { StatusBar } from '@ionic-native/status-bar';
-import { IonicStorageModule } from '@ionic/storage';// import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 
@@ -27,7 +28,8 @@ import { HttpModule } from '@angular/http';
     evalAriketak,
     bilatzaile,
     hiztegiak,
-    about
+    about,
+    hiztegiakView
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,6 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     HiztegiakService,
-    // IonicStorageModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

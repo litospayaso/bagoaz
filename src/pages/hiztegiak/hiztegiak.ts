@@ -3,6 +3,8 @@ import { LoadingController } from 'ionic-angular';
 
 import { HiztegiakService } from '../../assets/services/HiztegiakService';
 
+// import { hiztegiakView } from '../../assets/components/hiztegiakView';
+
 @Component({
   selector: 'hiztegiak',
   templateUrl: 'hiztegiak.html'

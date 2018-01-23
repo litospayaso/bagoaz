@@ -35,33 +35,6 @@
     </ion-item>
   </ion-list>
 
-  <div *ngIf="result">
-    <ion-card>
-      <ion-card-header>
-        {{result.hitza}}
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list no-lines>
-          <div *ngFor="let translation of result.trans">
-            {{translation}}
-          </div>
-        </ion-list>        
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card *ngIf="result.examples.length>0">
-      <ion-card-header>
-        Ejemplos
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list>
-          <div *ngFor="let example of result.examples">
-            {{example}}
-          </div>
-        </ion-list>        
-      </ion-card-content>
-    </ion-card>
-  </div>
-
+  <hiztegiakView [result]="result"></hiztegiakView>
 
 </ion-content>
