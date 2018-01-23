@@ -8,7 +8,7 @@ export class HiztegiakService {
     this.http = http;
   }
 
-  translate(hitza,language,callback,entry=true) {
+  translate(hitza,callback,language="eu",entry=true) {
     let url = "https://hiztegiak.elhuyar.eus/";
     if(language === "eu"){
       url = url.concat("eu_es/");
@@ -41,7 +41,7 @@ export class HiztegiakService {
         callback({hitza,trans,examples,language});
       }else{//Palabra no encontrada.
         if(el.find(".didyoumean").length>0 && entry){
-          this.translate(el.find(".didyoumean a")[0].innerText,language,callback,false);
+          this.translate(el.find(".didyoumean a")[0].innerText,callback,language,false);
         }else{
           callback(false);
         }

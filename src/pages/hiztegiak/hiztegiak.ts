@@ -28,9 +28,9 @@ export class hiztegiak {
       content:'Cargando...'
     });
     loader.present();
-    this.hiztegiakService.translate(this.hizta,this.language,(data)=>{
+    this.hiztegiakService.translate(this.hizta,(data)=>{
       loader.dismiss();
       this.result = data;
-    });
+    },this.language);
   }
 }
