@@ -46,6 +46,10 @@
       </div>
   </div>
   <div *ngIf="zorionak">
-    ENHORABUENA!!!
+    <div class="zorionak-picture">
+      <img src="../../assets/euskicons/33.jpg">
+    </div>
+    <div class="zuzen">¡Has completado correctamente la lección!</div>
+    <button ion-button full (click)="comeBackToGaiak()">Volver a las lecciones</button>
   </div>
 </ion-content>

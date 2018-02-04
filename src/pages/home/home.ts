@@ -3,7 +3,7 @@ import { NavController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { readGaia } from '../readGaia/readGaia';
-import { evalAriketak } from '../evalAriketak/evalAriketak';
+// import { evalAriketak } from '../evalAriketak/evalAriketak';
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
@@ -36,7 +36,7 @@ export class HomePage {
       console.info(this.dataBase);
       this.gaiak = response.gaiak;
       loader.dismiss();
-      this.navCtrl.push(evalAriketak,{gaia:36});
+      // this.navCtrl.push(evalAriketak,{gaia:36});
     },err => {
       storage.get('allData').then((val) => {
         if(val){
@@ -46,6 +46,7 @@ export class HomePage {
           console.info("you don't have internet conection, running with cache.",this.dataBase);
           this.gaiak = response.gaiak;
           loader.dismiss();
+          // this.navCtrl.push(evalAriketak,{gaia:36});
           // this.navCtrl.push(readGaia,{gaia:17});
         }else{
           http.get("../../assets/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
@@ -65,6 +66,16 @@ export class HomePage {
   }
   clickGaia(e){
     this.navCtrl.push(readGaia,{gaia:e});
+  }
+  completeClass(e){
+    this.storage.get('lessonPassed').then(val => {
+      if(val){
+        let lessonPassed = JSON.parse(val);
+        if(lessonPassed.includes(e)){
+          return "passed"
+        }
+      }
+    });
   }
 }
 

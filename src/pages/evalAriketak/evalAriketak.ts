@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, PopoverController } from 'ionic-angular';
+import { Component} from '@angular/core';
+import { NavController, NavParams, PopoverController, ToastController } from 'ionic-angular';
 import { database } from '../home/home';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular';
 
 import { hiztegiakView } from '../../assets/components/hiztegiakView/hiztegiakView';
+import { HomePage } from '../home/home';
 
 import { HiztegiakService } from '../../assets/services/HiztegiakService';
 import 'rxjs/add/operator/map';
@@ -36,7 +37,8 @@ export class evalAriketak {
     public storage : Storage,
     public popoverCtrl: PopoverController,
     public hiztegiakService: HiztegiakService,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController
   ) {
     this.http = http;
     this.storage = storage;
@@ -66,17 +68,27 @@ export class evalAriketak {
   }
 
   setCurrent() {
+    if(this.ariketakList.length===0){
+      this.lessonComplete();
+    }
     this.current = this.ariketakList.sort(() => {return Math.random() - 0.5}).pop();
     console.info('current', this.current);
     if (this.current.audio) {
       this.text = null;
       this.audio = "https://raw.githubusercontent.com/litospayaso/bagoaz-ionic/master/www/database/audios/"+ this.current.audio +".mp3";
       this.http.get(this.audio).subscribe(null,err=>{//en caso de error se salta el ejercicio de audio.
+        let toast = this.toastCtrl.create({
+          message: 'Es necesario tener conexión a internet para poder hacer ejercicios de audio.',
+          duration: 3000
+        });
+        toast.present();
         this.setCurrent();
       });
     } else {
       this.audio = null;
-      this.current.euskara = this.current.euskara.split(" ");
+      if(typeof(this.current.euskara)==="string"){//si ha fallado anteriormente ya habriamos hecho la conversion a array
+        this.current.euskara = this.current.euskara.split(" ");
+      }
       this.text = this.current;
     }
   }
@@ -101,18 +113,23 @@ export class evalAriketak {
       this.response="";
       this.setCurrent();
     }else{
-      this.zorionak=true;
-      this.storage.get('lessonPassed').then((val) => {
-        let cookie;
-        if(val){
-          cookie = JSON.parse(val);
-        }else{
-          cookie = [];
-        }
-        cookie.push(this.lesson);
-        this.storage.set("lessonPassed",JSON.stringify(cookie));
-      });
+      this.lessonComplete();
     }
+  }
+
+  lessonComplete(){
+    this.zorionak=true;
+    this.completePercent="100%";
+    this.storage.get('lessonPassed').then((val) => {
+      let cookie;
+      if(val){
+        cookie = JSON.parse(val);
+      }else{
+        cookie = [];
+      }
+      cookie.push(this.lesson);
+      this.storage.set("lessonPassed",JSON.stringify(cookie));
+    });
   }
 
   playMedia(){
@@ -130,6 +147,10 @@ export class evalAriketak {
         this.zuzendu();
       }
     }
+  }
+
+  comeBackToGaiak(){
+    this.navCtrl.push(HomePage);
   }
 
   compareStrings(str1, str2) {
