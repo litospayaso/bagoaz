@@ -20,9 +20,8 @@ export class bilatzaile {
   bilatzaile(){
     const allGaiak = database().gaiak;
     this.gaiak=[];
-    console.info(allGaiak);
     allGaiak.forEach(element => {
-      if(element.gaia.includes(this.hizta)){
+      if(element.gaia.toLowerCase().includes(this.hizta.toLowerCase())){
         this.gaiak.push(element);
       }
     });
