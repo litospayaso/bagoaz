@@ -3,19 +3,25 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>  <ion-icon name="book"></ion-icon> Gaiak</ion-title>
+    <ion-title>
+      <ion-icon name="book"></ion-icon> Gaiak</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="dataBase">
-    <div *ngFor="let gaia of gaiak" >
-      <!-- <img src="assets/1.jpeg"/>
-      <div class="title"></div> -->
-      <button ion-button full (click)="clickGaia(gaia.maila)">{{gaia.maila}}. {{gaia.izenburu}}</button>
-    </div>
+  <div *ngIf="dataBase" class="center">
+    <span *ngFor="let gaia of gaiak">
+      <div class="card" [ngClass]="completeClass(gaia.maila)" (click)="clickGaia(gaia.maila)">
+        <ion-grid style="height:100%">
+          <ion-row style="height:100%">
+            <ion-col col-4 style="height:100%"><img src="assets/euskicons/{{gaia.maila}}.jpg"></ion-col>
+            <ion-col col-8 style="height:100%">{{gaia.maila}}. {{gaia.izenburu}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </span>
   </div>
-  <div *ngIf="!dataBase"> 
-    <h2>Fallo al obtener la basae de datos, revise su conexión a internet.</h2>
+  <div *ngIf="!dataBase">
+    <h2>Fallo al obtener la base de datos, revise su conexión a internet.</h2>
   </div>
-</ion-content> 
+</ion-content>
