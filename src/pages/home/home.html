@@ -11,7 +11,7 @@
 <ion-content padding>
   <div *ngIf="dataBase" class="center">
     <span *ngFor="let gaia of gaiak">
-      <div class="card" [ngClass]="completeClass(gaia.maila)" (click)="clickGaia(gaia.maila)">
+      <div class="card-element" [ngClass]="completeClass(gaia.maila-1)" (click)="clickGaia(gaia.maila)">
         <ion-grid style="height:100%">
           <ion-row style="height:100%">
             <ion-col col-4 style="height:100%"><img src="assets/euskicons/{{gaia.maila}}.jpg"></ion-col>

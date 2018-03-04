@@ -8,7 +8,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content style="padding:5px">
   <ion-list>
     <ion-grid>
       <ion-row>
@@ -16,7 +16,7 @@
           <ion-item>
             <!-- <ion-label fixed>
               <ion-icon name="search"></ion-icon> Hizta</ion-label> -->
-            <ion-input type="text" [(ngModel)]="hizta"></ion-input>
+            <ion-input type="text" [(ngModel)]="hizta" (keyup.enter)=clickTranslate()></ion-input>
             <ion-item>
               <ion-label>Lenguage</ion-label>
             </ion-item>

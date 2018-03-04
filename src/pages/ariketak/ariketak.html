@@ -3,14 +3,22 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title><ion-icon name="create"></ion-icon> Ariketak</ion-title>
+    <ion-title>
+      <ion-icon name="create"></ion-icon> Ariketak</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div *ngFor="let gaia of gaiak">
-    <!-- <img src="assets/1.jpeg"/>
-      <div class="title"></div> -->
-    <button ion-button full (click)="clickAriketak(gaia.maila)">{{gaia.maila}}. {{gaia.izenburu}}</button>
-  </div>
+  <span *ngFor="let gaia of gaiak">
+    <div class="card-element" [ngClass]="completeClass(gaia.maila-1)" (click)="clickAriketak(gaia.maila)">
+      <ion-grid style="height:100%">
+        <ion-row style="height:100%">
+          <ion-col col-4 style="height:100%">
+            <img src="assets/euskicons/{{gaia.maila}}.jpg">
+          </ion-col>
+          <ion-col col-8 style="height:100%">{{gaia.maila}}. {{gaia.izenburu}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </span>
 </ion-content>

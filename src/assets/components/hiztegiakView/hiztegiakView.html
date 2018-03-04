@@ -1,4 +1,4 @@
-<div *ngIf="result">
+<div *ngIf="result" padding>
   <ion-card>
     <ion-card-header>
       {{result.hitza}}
@@ -24,4 +24,5 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+  <a [href]="result.url">Traducción ofrecida por El Huyar</a>
 </div>

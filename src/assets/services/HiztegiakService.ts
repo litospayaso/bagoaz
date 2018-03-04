@@ -38,7 +38,7 @@ export class HiztegiakService {
           examples.push(padDefn[i].innerText);
         }
         hitza=el.find("#tts_source").text()
-        callback({hitza,trans,examples,language});
+        callback({hitza,trans,examples,language,url});
       }else{//Palabra no encontrada.
         if(el.find(".didyoumean").length>0 && entry){
           this.translate(el.find(".didyoumean a")[0].innerText,callback,language,false);
