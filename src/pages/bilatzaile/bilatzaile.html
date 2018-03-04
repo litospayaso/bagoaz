@@ -3,19 +3,33 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>  <ion-icon name="search"></ion-icon> Bilatzaile </ion-title>
+    <ion-title>
+      <ion-icon name="search"></ion-icon> Bilatzaile </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-      <ion-item>
-        <ion-label fixed><ion-icon name="search"></ion-icon> Hizta</ion-label>
-        <ion-input type="text" [(ngModel)]="hizta" (ngModelChange)="bilatzaile()"></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label fixed>
+        <ion-icon name="search"></ion-icon> Hizta</ion-label>
+      <ion-input type="text" [(ngModel)]="hizta" (ngModelChange)="bilatzaile()"></ion-input>
+    </ion-item>
   </ion-list>
 
-  <div *ngFor="let gaia of gaiak" >
+  <span *ngFor="let gaia of gaiak">
+    <div class="card-element" (click)="clickGaia(gaia.maila)">
+      <ion-grid style="height:100%">
+        <ion-row style="height:100%">
+          <ion-col col-4 style="height:100%">
+            <img src="assets/euskicons/{{gaia.maila}}.jpg">
+          </ion-col>
+          <ion-col col-8 style="height:100%">{{gaia.maila}}. {{gaia.izenburu}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </span>
+  <!-- <div *ngFor="let gaia of gaiak" >
     <button ion-button full (click)="clickGaia(gaia.maila)">{{gaia.maila}}. {{gaia.izenburu}}</button>      
-  </div>
-</ion-content> 
+  </div> -->
+</ion-content>
