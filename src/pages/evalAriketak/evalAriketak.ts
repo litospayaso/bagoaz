@@ -75,7 +75,7 @@ export class evalAriketak {
     console.info('current', this.current);
     if (this.current.audio) {
       this.text = null;
-      this.audio = "https://raw.githubusercontent.com/litospayaso/bagoaz-ionic/master/www/database/audios/"+ this.current.audio +".mp3";
+      this.audio = `https://raw.githubusercontent.com/litospayaso/bagoaz-ionic/master/www/database/audios/${this.current.audio}.mp3?cb=${new Date().getTime()}`;
       this.http.get(this.audio).subscribe(null,err=>{//en caso de error se salta el ejercicio de audio.
         let toast = this.toastCtrl.create({
           message: 'Es necesario tener conexión a internet para poder hacer ejercicios de audio.',
