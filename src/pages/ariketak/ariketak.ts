@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'ariketak.html'
+  templateUrl: 'ariketak.html',
+  styles:['ariketak.scss']
 })
 
 export class ariketak {

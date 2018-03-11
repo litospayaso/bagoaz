@@ -35,7 +35,7 @@ export class HomePage {
     loader.present();
     this.navCtrl = navCtrl;
     this.storage = storage;
-    http.get("https://raw.githubusercontent.com/litospayaso/bagoaz-ionic/master/www/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
+    http.get("https://raw.githubusercontent.com/litospayaso/bagoaz/master/src/assets/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
       this.dataBase = response;
       allData = response;
       this.storage.set('allData', JSON.stringify(allData));

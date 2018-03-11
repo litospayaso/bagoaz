@@ -75,8 +75,10 @@ export class evalAriketak {
     console.info('current', this.current);
     if (this.current.audio) {
       this.text = null;
-      this.audio = `https://raw.githubusercontent.com/litospayaso/bagoaz-ionic/master/www/database/audios/${this.current.audio}.mp3?cb=${new Date().getTime()}`;
-      this.http.get(this.audio).subscribe(null,err=>{//en caso de error se salta el ejercicio de audio.
+      this.audio = `https://raw.githubusercontent.com/litospayaso/bagoaz/master/src/assets/database/audios/${this.current.audio}.mp3`;
+      let audioTag = <HTMLAudioElement> document.getElementById('audioTag');
+      audioTag ? audioTag.load() : '';
+        this.http.get(this.audio).subscribe(null,err=>{//en caso de error se salta el ejercicio de audio.
         let toast = this.toastCtrl.create({
           message: 'Es necesario tener conexión a internet para poder hacer ejercicios de audio.',
           duration: 3000
@@ -135,7 +137,8 @@ export class evalAriketak {
   playMedia(){
     // this.mediaIcon = "pause";
     let audioTag = <HTMLAudioElement> document.getElementById('audioTag');
-    audioTag.play();
+    audioTag.load()
+    // audioTag.play();
     // (window.document.getElementById('audioTag').paused && document.getElementById('audioTag').currentTime > 0) ? document.getElementById('audioTag').play() : document.getElementById('audioTag').pause()
   }
 
@@ -150,7 +153,7 @@ export class evalAriketak {
   }
 
   comeBackToGaiak(){
-    this.navCtrl.push(HomePage);
+    this.navCtrl.setRoot(HomePage);
   }
 
   compareStrings(str1, str2) {
@@ -171,6 +174,11 @@ export class evalAriketak {
     }//removing accent mark
     answer = answer.replace(/á/g, "a").replace(/é/g, "e").replace(/í/g, "i").replace(/ó/g, "o").replace(/ú/g, "u");
     solution = solution.replace(/á/g, "a").replace(/é/g, "e").replace(/í/g, "i").replace(/ó/g, "o").replace(/ú/g, "u");
+    if (answer === solution) {
+      return true;
+    }//removing white spaces at the beginning and at the end:
+    answer = answer.replace(/"/g, "");
+    solution = solution.replace(/"/g, "");
     if (answer === solution) {
       return true;
     }//removing white spaces at the beginning and at the end:

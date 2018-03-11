@@ -1,4 +1,5 @@
-page-home {
+ion-content.home{
+    background-image: url("../assets/icon/gaiaBackground.jpg");    
 }
 .sheet{
     display: inline-block;
@@ -26,6 +27,7 @@ page-home {
     width: 300px;
     height: 100px;
     border-radius: 5px;
+    background-color: white;
     -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
     -moz-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
