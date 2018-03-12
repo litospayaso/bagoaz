@@ -9,14 +9,8 @@ export class HiztegiakService {
   }
 
   translate(hitza,callback,language="eu",entry=true) {
-    let url = "https://hiztegiak.elhuyar.eus/";
-    if(language === "eu"){
-      url = url.concat("eu_es/");
-    }else{
-      url = url.concat("es_eu/");
-    }
-    url = url.concat(hitza);
-    this.http.get(url).subscribe((data)=>{
+    let url = `https://hiztegiak.elhuyar.eus/${language==='eu'?'eu_es/':'es_eu/'}${hitza}`;
+    this.http.get(url).subscribe(data=>{
       let trans: Array<string> = Array();
       let examples: Array<string> = Array();
       const el = $(data["_body"].replace("<!doctype html>","").replace(/src=/gi, "srcad="));

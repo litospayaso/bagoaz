@@ -135,11 +135,8 @@ export class evalAriketak {
   }
 
   playMedia(){
-    // this.mediaIcon = "pause";
     let audioTag = <HTMLAudioElement> document.getElementById('audioTag');
     audioTag.load()
-    // audioTag.play();
-    // (window.document.getElementById('audioTag').paused && document.getElementById('audioTag').currentTime > 0) ? document.getElementById('audioTag').play() : document.getElementById('audioTag').pause()
   }
 
   onKeyPress(event){
@@ -171,12 +168,12 @@ export class evalAriketak {
     solution = solution.toLowerCase();
     if (answer === solution) {
       return true;
-    }//removing accent mark
+    }//removing accent mark:
     answer = answer.replace(/á/g, "a").replace(/é/g, "e").replace(/í/g, "i").replace(/ó/g, "o").replace(/ú/g, "u");
     solution = solution.replace(/á/g, "a").replace(/é/g, "e").replace(/í/g, "i").replace(/ó/g, "o").replace(/ú/g, "u");
     if (answer === solution) {
       return true;
-    }//removing white spaces at the beginning and at the end:
+    }//removing quoutes:
     answer = answer.replace(/"/g, "");
     solution = solution.replace(/"/g, "");
     if (answer === solution) {
