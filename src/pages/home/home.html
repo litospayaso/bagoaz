@@ -9,19 +9,31 @@
 </ion-header>
 
 <ion-content padding class="home">
+  <div *ngIf="!dataBase">
+    <ion-card>
+      <ion-card-content>
+        Fallo al obtener la base de datos, revise su conexión a internet.
+      </ion-card-content>
+      <ion-item>
+        <button ion-button icon-left clear item-end (click)="refresh()">
+          <ion-icon name="refresh"></ion-icon>
+          Reintentar
+        </button>
+      </ion-item>
+    </ion-card>
+  </div>
   <div *ngIf="dataBase" class="center">
     <span *ngFor="let gaia of gaiak">
       <div class="card-element" [ngClass]="completeClass(gaia.maila-1)" (click)="clickGaia(gaia.maila)">
         <ion-grid style="height:100%">
           <ion-row style="height:100%">
-            <ion-col col-4 style="height:100%"><img src="assets/euskicons/{{gaia.maila}}.jpg"></ion-col>
+            <ion-col col-4 style="height:100%">
+              <img src="assets/euskicons/{{gaia.maila}}.jpg">
+            </ion-col>
             <ion-col col-8 style="height:100%">{{gaia.maila}}. {{gaia.izenburu}}</ion-col>
           </ion-row>
         </ion-grid>
       </div>
     </span>
-  </div>
-  <div *ngIf="!dataBase">
-    <h2>Fallo al obtener la base de datos, revise su conexión a internet.</h2>
   </div>
 </ion-content>

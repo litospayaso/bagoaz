@@ -79,6 +79,9 @@ export class HomePage {
     }
     return "none"
   }
+  refresh(){
+    this.navCtrl.setRoot(this.navCtrl.getActive().component)
+  }
 }
 
 export const database = () => { return allData };
