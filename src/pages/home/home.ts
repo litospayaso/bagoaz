@@ -52,10 +52,8 @@ export class HomePage {
           console.info("you don't have internet conection, running with cache.", this.dataBase);
           this.gaiak = response.gaiak;
           loader.dismiss();
-          // this.navCtrl.push(evalAriketak,{gaia:36});
-          // this.navCtrl.push(readGaia,{gaia:17});
         } else {
-          http.get("../../assets/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
+          http.get("assets/database/bagoaz-export.json").map(res => res.json()).subscribe(response => {
             this.dataBase = response;
             allData = response;
             console.info("you don't have internet conection, running with local json.", this.dataBase);
