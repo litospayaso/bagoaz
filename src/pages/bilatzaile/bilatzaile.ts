@@ -19,12 +19,7 @@ export class bilatzaile {
   }
   bilatzaile(){
     const allGaiak = database().gaiak;
-    this.gaiak=[];
-    allGaiak.forEach(element => {
-      if(element.gaia.toLowerCase().includes(this.hizta.toLowerCase())){
-        this.gaiak.push(element);
-      }
-    });
+    this.gaiak= allGaiak.filter(e=>e.gaia.toLowerCase().includes(this.hizta.toLowerCase()));
   }
   clickGaia(e){
     this.navCtrl.push(readGaia,{gaia:e,hizta:this.hizta});

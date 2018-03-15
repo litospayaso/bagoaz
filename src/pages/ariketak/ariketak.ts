@@ -24,7 +24,7 @@ export class ariketak {
       if (val) {
         this.lessonPassed = JSON.parse(val);
       }
-    });
+    }).catch(e=>console.error(e));
   }
   clickAriketak(e){
     this.navCtrl.push(evalAriketak,{gaia:e});

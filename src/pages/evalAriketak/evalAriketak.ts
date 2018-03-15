@@ -131,7 +131,7 @@ export class evalAriketak {
       }
       cookie.push(this.lesson);
       this.storage.set("lessonPassed",JSON.stringify(cookie));
-    });
+    }).catch(e=>console.error(e));
   }
 
   playMedia(){

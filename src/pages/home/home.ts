@@ -28,7 +28,7 @@ export class HomePage {
       if (val) {
         this.lessonPassed = JSON.parse(val);
       }
-    });
+    }).catch(e=>console.error(e));
     let loader = this.loadingCtrl.create({
       content: 'Cargando...'
     });
@@ -66,7 +66,7 @@ export class HomePage {
             loader.dismiss();
           });
         }
-      });
+      }).catch(e=>console.error(e));
     });
 
   }
