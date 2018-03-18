@@ -38,11 +38,11 @@
         <ion-textarea type="text" lineHeight="22" [(ngModel)]="response"></ion-textarea>
       </ion-item>
         <div *ngIf="!isCorrecting">
-        <button ion-button full (click)="zuzendu()">Zuzendu</button>
+        <button ion-button full (click)="zuzendu()">Zuzendu (Corregir)</button>
       </div>
       <div *ngIf="isCorrecting">
         <div [className]="evaluationClass">{{isCorrecting}}</div>
-        <button ion-button full (click)="jarraitu()">Jarraitu</button>
+        <button ion-button full (click)="jarraitu()">Jarraitu (Continuar)</button>
       </div>
   </div>
   <div *ngIf="zorionak">

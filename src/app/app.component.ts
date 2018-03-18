@@ -26,11 +26,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Gaiak', icon:'book', color:'#10c1f3', component: HomePage},
-      { title: 'Ariketak', icon:'create', color:'#ffc900', component: ariketak },
-      { title: 'Bilatzaile', icon:'search', color:'#f53d3d', component: bilatzaile },
-      { title: 'Hiztegiak', icon:'bookmarks', color:'#33cd5e', component: hiztegiak },
-      { title: 'Laguntza', icon:'help', color:'#886aea', component: about }//#33cd5e
+      { title: 'Gaiak (Lecciones)', icon:'book', color:'#10c1f3', component: HomePage},
+      { title: 'Ariketak (Ejercicios)', icon:'create', color:'#ffc900', component: ariketak },
+      { title: 'Bilatzaile (Buscador)', icon:'search', color:'#f53d3d', component: bilatzaile },
+      { title: 'Hiztegiak (Diccionario)', icon:'bookmarks', color:'#33cd5e', component: hiztegiak },
+      { title: 'Laguntza (Acerca de)', icon:'help', color:'#886aea', component: about }//#33cd5e
     ];
 
   }
