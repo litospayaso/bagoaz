@@ -8,4 +8,4 @@ exportar.sh
 npm-debug.log
 *.apk
 *.keystore
-
+package-lock.json
